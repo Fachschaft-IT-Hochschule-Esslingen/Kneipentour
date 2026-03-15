@@ -2,18 +2,14 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1280, height=device-height">
     <title>Kneipentour</title>
     <!--TODO: fix-->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="relative m-0 p-0" id="body">
     <!--background gradient-->
-    <div class="absolute inset-0 -z-20" style="background: linear-gradient(to bottom, #7ED9C8  0%, #1E4E59 100%); min-height: 100%;"></div>
-    <!-- background city -->
-    <div class="absolute bottom-0 left-0 w-full -z-10 city-div">
-        <img src="pics/city.svg" alt="" class="w-full" />
-    </div>
+    <div class="fixed inset-0 -z-20" style="background: linear-gradient(to bottom, #7ED9C8 0%, #1E4E59 100%);"></div>
     <!--background clouds-->
     <div class="
         absolute top-0 left-0 -z-10 w-full
@@ -42,125 +38,73 @@
         </div>
 
         <!--Title svg-->
-        <div class="flex justify-center mt-4">
+        <div class="flex justify-center mt-4 w-3/4 mx-auto">
             <img src="pics/title.svg" alt="Title" class="w-3/4"/>
         </div>
 
         <div class="divider"></div>
     
         <!--actual html content-->
-        <div class="mx-auto w-3/4" style="color: #C9F2E7; font-family: 'KimberleyBl-Regular', sans-serif;" id="lang-text"></div>
+        <div class="mx-auto w-3/4 text-center" style="color: #C9F2E7; font-family: 'KimberleyBl-Regular', sans-serif;" id="lang-text"></div>
     
-        <div class="second-divider"></div>
+        <div class="generic-divider"></div>
 
-        <div class="mx-auto w-[81%]">
+        <div class="mx-auto w-[50%]">
             <img src="pics/bar-rotations.svg" alt="">
         </div>
+
+        <div class="generic-divider"></div>
     </div>
 
+    <!-- background city -->
+    <div class="w-full overflow-hidden" style="height: 39vw;">
+        <img src="pics/city.svg" alt="" class="w-full" />
+    </div>
 
     <!--Scripts-->
+    <script src="script/main.js"></script>
 
     <!--Manages language of actual html text-->
     <script src="script/translations.js"></script>
 </body>
 <style>
+    html {
+        height: 100%;
+    }
+    body {
+        min-height: 100%;
+    }
     @font-face {
         font-family: 'KimberleyBl-Regular';
         src: url('fonts/Kimberley.otf') format('opentype');
     }
-    body{
-        min-height: 100vh;
-    }
     /*I despise css*/
-    /* Handies */
-    @media (pointer: coarse) {
+    @media (orientation: landscape) {
+        .clouds {
+            transform: translateY(-9vw);
+        }
+        .divider {
+            height: 19.5vw;
+        }
         #lang-text {
-            font-size: 1.3rem;
+            font-size: 2rem;
         }
-        @media (orientation: landscape) {
-            .clouds {
-                /*WHY DOES THIS LOOK DIFFERENT IF I REMOVE THIS?!?!?!*/
-                transform: translateY(0);
-            }
-            body {
-                min-height: 110em;
-            }
-            .city-div {
-                overflow: hidden;
-                height: 30em;
-            }
-            .divider {
-                height: 10em;
-            }
-            .second-divider{
-                height: 3em;
-            }
-        }
-        /* FIXME: Wolken haben oben eine Lücke*/
-        @media (orientation: portrait) {
-            .clouds {
-                transform: translateY(2em) scaleY(1.5);
-            }
-            .divider{
-                height: 6em;
-            }
-            .second-divider{
-                height: 2em;
-            }
-            body {
-                min-height: 77em;
-            }
-            .city-div {
-                overflow: hidden;
-                height: 13em;
-            }
+        .generic-divider {
+            height: 5vw;
         }
     }
-    /* Computer */
-    @media (pointer: fine) {
-        /* You are probably here */
-        @media (orientation: landscape) {
-            .clouds {
-                transform: translateY(-9em);
-            }
-            body {
-                min-height: 205em;
-            }
-            .city-div {
-                overflow: hidden;
-                height: 40em;
-            }
-            .divider {
-                height: 19.5em;
-            }
-            #lang-text {
-                font-size: 3rem;
-            }
-            .second-divider{
-                height: 10em;
-            }
+    @media (orientation: portrait) {
+        .clouds {
+            transform: translateY(-2vw);
         }
-        @media (orientation: portrait) {
-            .clouds {
-                transform: translateY(-2em);
-            }
-            .divider{
-                height: 11em;
-            }
-            #lang-text {
-                font-size: 2rem;
-            }
-            .second-divider{
-                height: 3em;
-            }
-            body {
-                min-height: 135em;
-            }
-            .city-div {
-                overflow: hidden;
-                height: 30em;
-            }
+        .divider {
+            height: 11vw;
+        }
+        #lang-text {
+            font-size: 2rem;
+        }
+        .generic-divider {
+            height: 3vw;
         }
     }
     /*Make scrollbar vanish (no one needs that thing anyway)*/
