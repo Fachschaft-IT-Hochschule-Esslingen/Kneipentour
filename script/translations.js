@@ -1,3 +1,6 @@
+// TODO: fails on duckduckgo mobile version
+// TODO: fuckfuckgo mobile version also doesn't apply font or color nicht korrekt
+
 // standard language
 const langs = ["DE", "EN"];
 let lang_index = 0;
