@@ -4,10 +4,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kneipentour</title>
+    <!--TODO: fix-->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body id="body">
-    <button id="lang-button">Change language</button>
+<body class="relative m-0 p-0" id="body">
+    <!--background gradient-->
+    <div class="absolute inset-0 -z-20" style="background: linear-gradient(to bottom, #c9f2e7 0%, #4ad1b8 50%, #1e4e59 100%); min-height: 100%;"></div>
+    <!-- background city -->
+    <div class="absolute bottom-0 left-0 w-full -z-10 city-div">
+        <img src="pics/city.svg" alt="" class="w-full" />
+    </div>
+    <!--background clouds-->
+    <div class="
+        absolute top-0 left-0 -z-10 w-full
+        -translate-y-8
+        md:-translate-y-16
+        landscape-clouds
+    ">
+        <img
+            src="pics/clouds.svg"
+            alt=""
+            class="w-full"
+        />
+    </div>
+
+    <!--elements containing actual content-->
+    <div class="relative z-10">
+        <div class="flex justify-end p-4">
+            <button id="lang-button" class="
+                bg-transparent
+                border-2 border-solid
+                rounded
+                px-6 py-3
+                text-lg font-semibold
+                cursor-pointer
+            " style="border-color: #F29441; color: #F29441; font-family: 'Kimberley', sans-serif;">...</button>
+        </div>
+
+        <div class="flex justify-center mt-4">
+            <img src="pics/title.svg" alt="Title" class="w-3/4 md:w-2/3"/>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!--actual html content-->
+    <div class="mx-auto w-3/4" style="color: #C9F2E7; font-family: 'Kimberley', sans-serif;" id="lang-text"></div>
+
+    <!--Scripts-->
+
     <!--Manages language of actual html text-->
     <script src="script/translations.js"></script>
 </body>
+<style>
+    @font-face {
+        font-family: 'Kimberley';
+        src: url('fonts/Kimberley.otf') format('opentype');
+    }
+    body{
+        min-height: 100vh;
+    }
+    @media (orientation: landscape) {
+        .landscape-clouds {
+            transform: translateY(-12em);
+        }
+        body {
+            min-height: 300vh;
+        }
+        .city-div {
+            overflow: hidden;
+            height: 70vh;
+        }
+        .divider {
+            height: 45vh;
+        }
+        #lang-text {
+            font-size: 3rem;
+        }
+    }
+    @media (orientation: portrait) {
+        .divider{
+            height: 12vh;
+        }
+        #lang-text {
+            font-size: 2rem;
+        }
+    }
+    body::-webkit-scrollbar {
+        display: none; /* Chrome, Safari */
+    }
+    * {
+        -ms-overflow-style: none;  /* IE, Edge */
+        scrollbar-width: none;     /* Firefox */
+    }
+</style>
 </html>
