@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1280, height=device-height">
+    <meta name="viewport" content="width=device-width, height=device-height">
     <title>Kneipentour</title>
     <!--TODO: fix-->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -27,18 +27,11 @@
     <!--elements containing actual content-->
     <div class="relative z-10">
         <div class="flex justify-end p-4">
-            <button id="lang-button" class="
-                bg-transparent
-                border-2 border-solid
-                rounded
-                px-6 py-3
-                text-lg font-semibold
-                cursor-pointer
-            " style="border-color: #F29441; color: #F29441; font-family: 'Kimberley', sans-serif;">...</button>
+            <button id="lang-button" class="lang-button">...</button>
         </div>
 
         <!--Title svg-->
-        <div class="flex justify-center mt-4 w-3/4 mx-auto">
+        <div class="flex justify-center mt-4 w-3/4 mx-auto title-portrait">
             <img src="pics/title.svg" alt="Title" class="w-3/4"/>
         </div>
 
@@ -49,7 +42,8 @@
     
         <div class="generic-divider"></div>
 
-        <div class="mx-auto w-[50%]">
+        <!--Bar rotations-->
+        <div class="bar-rotations-container mx-auto">
             <img src="pics/bar-rotations.svg" alt="">
         </div>
 
@@ -57,13 +51,11 @@
     </div>
 
     <!-- background city -->
-    <div class="w-full overflow-hidden" style="height: 39vw;">
+    <div class="w-full overflow-hidden mt-auto" style="height: 39vw;">
         <img src="pics/city.svg" alt="" class="w-full" />
     </div>
 
     <!--Scripts-->
-    <script src="script/main.js"></script>
-
     <!--Manages language of actual html text-->
     <script src="script/translations.js"></script>
 </body>
@@ -73,12 +65,22 @@
     }
     body {
         min-height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .lang-button {
+        background: transparent;
+        border: 0.3em solid #F29441;
+        border-radius: 0.5em;
+        color: #F29441;
+        font-family: 'Kimberley', sans-serif;
     }
     @font-face {
         font-family: 'KimberleyBl-Regular';
         src: url('fonts/Kimberley.otf') format('opentype');
     }
     /*I despise css*/
+    /* should be computers*/
     @media (orientation: landscape) {
         .clouds {
             transform: translateY(-9vw);
@@ -92,19 +94,34 @@
         .generic-divider {
             height: 5vw;
         }
-    }
-    @media (orientation: portrait) {
-        .clouds {
-            transform: translateY(-2vw);
+        .lang-button {
+            padding: 0.5rem 1rem;
+            font-size: 2.5rem;
         }
+        .bar-rotations-container {
+            width: 50%;
+        }
+    }
+    /* should be smartphones */
+    @media (orientation: portrait) {
         .divider {
             height: 11vw;
         }
         #lang-text {
-            font-size: 2rem;
+            font-size: 1.3rem;
         }
         .generic-divider {
-            height: 3vw;
+            height: 10vw;
+        }
+        .lang-button {
+            padding: 0.25rem 0.5rem;
+            font-size: 1.2rem;
+        }
+        .bar-rotations-container {
+            width: 75%;
+        }
+        .title-portrait {
+            transform: translateY(-4em);
         }
     }
     /*Make scrollbar vanish (no one needs that thing anyway)*/
