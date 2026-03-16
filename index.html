@@ -4,135 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, height=device-height">
     <title>Kneipentour</title>
-    <link rel="stylesheet" href="./dist/output.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="relative m-0 p-0" id="body">
+<body id="body">
     <!--background gradient-->
-    <div class="fixed inset-0 -z-20" style="background: linear-gradient(to bottom, #7ED9C8 0%, #1E4E59 100%);"></div>
+    <div class="bg-gradient"></div>
     <!--background clouds-->
-    <div class="
-        absolute top-0 left-0 -z-10 w-full
-        -translate-y-8
-        md:-translate-y-16
-        clouds
-    ">
-        <img
-            src="pics/clouds.svg"
-            alt=""
-            class="w-full"
-        />
+    <div class="bg-clouds" id="clouds">
+        <img src="pics/clouds.svg" alt="" />
     </div>
-
     <!--elements containing actual content-->
-    <div class="relative z-10">
-        <div class="flex justify-end p-4">
+    <div class="content">
+        <div class="lang-button-wrapper">
             <button id="lang-button" class="lang-button">...</button>
         </div>
-
         <!--Title svg-->
-        <div class="flex justify-center mt-4 w-3/4 mx-auto title-portrait">
-            <img src="pics/title.svg" alt="Title" class="w-3/4"/>
+        <div class="title-wrapper">
+            <img src="pics/title.svg" alt="Title" />
         </div>
-
         <div class="divider"></div>
-    
-        <!--actual html content-->
-        <div class="mx-auto w-3/4 text-center" style="color: #C9F2E7; font-family: 'KimberleyBl-Regular', sans-serif;" id="lang-text"></div>
-    
-        <div class="generic-divider"></div>
 
+        <!--actual html content-->
+        <div id="lang-text"></div>
+
+        <div class="generic-divider"></div>
         <!--Bar rotations-->
-        <div class="bar-rotations-container mx-auto">
+        <div class="bar-rotations-container">
             <img src="pics/bar-rotations.svg" alt="">
         </div>
-
         <div class="generic-divider"></div>
     </div>
-
     <!-- background city -->
-    <div class="w-full overflow-hidden mt-auto" style="height: 39vw;">
-        <img src="pics/city.svg" alt="" class="w-full" />
+    <div class="bg-city">
+        <img src="pics/city.svg" alt="" />
     </div>
 
     <!--Scripts-->
+    <script src="script/height-solver.js"></script>
     <!--Manages language of actual html text-->
     <script src="script/translations.js"></script>
 </body>
-<style>
-    body {
-        min-height: 100dvh;
-        display: flex;
-        flex-direction: column;
-    }
-    .lang-button {
-        background: transparent;
-        border: 0.3em solid #F29441;
-        border-radius: 0.5em;
-        color: #F29441;
-        font-family: 'Kimberley', sans-serif;
-    }
-    @font-face {
-        font-family: 'KimberleyBl-Regular';
-        src: url('fonts/Kimberley.otf') format('opentype');
-    }
-    /*I despise css*/
-    /* should be computers*/
-    @media (orientation: landscape) {
-        .clouds {
-            transform: translateY(-9vw);
-        }
-        .divider {
-            height: 19.5vw;
-        }
-        #lang-text {
-            font-size: 2rem;
-        }
-        .generic-divider {
-            height: 5vw;
-        }
-        .lang-button {
-            padding: 0.5rem 1rem;
-            font-size: 2.5rem;
-        }
-        .bar-rotations-container {
-            width: 50%;
-        }
-    }
-    /* should be smartphones */
-    @media (orientation: portrait) {
-        .divider {
-            height: 11vw;
-        }
-        #lang-text {
-            font-size: 1.3rem;
-        }
-        .generic-divider {
-            height: 10vw;
-        }
-        .lang-button {
-            padding: 0.25rem 0.5rem;
-            font-size: 1.2rem;
-        }
-        .bar-rotations-container {
-            width: 75%;
-        }
-        .title-portrait {
-            transform: translateY(-4em);
-        }
-    }
-    /*Make scrollbar vanish (no one needs that thing anyway)*/
-    body::-webkit-scrollbar {
-        display: none;
-    }
-    * {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
-    a {
-        color: #F29441;
-    }
-    a:visited {
-        color: #1E4E59;
-    }
-</style>
 </html>
